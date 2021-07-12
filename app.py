@@ -37,9 +37,8 @@ fig.update_layout(
     font_color=colors['text']
 )
 
-app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
-    html.Header(
-        children=[
+app.layout = html.Div(children=[
+    html.Header(children=[
             html.Div(children=[
                 html.Div(children=[
                     html.Img(src="static/svg/logo-hrv-nuevo.svg",width='160px'),
@@ -53,35 +52,25 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                         html.Div(children=[
                             html.Div('fs: ',className='title'),
                             html.Div(id='fs_name')], className='item')], className='box')],className='container_m'),
-                    dbc.Button('Download as csv',color="success",className="btn-sm disabled",id="download_csv")],className='container'),
-            ],
-        style={ 
-            'textAlign': 'left',
-            'color': colors['text']
-        }
-    ),
-
-    html.Div(children=[
+                html.Div(children=[
+                        dbc.Button('Show Metadata',color="success",className="btn-sm disabled mr-2 btn-hrv",id="show_metadata"),
+                        dbc.Button('Download as csv',color="success",className="btn-sm disabled mr-5 btn-hrv",id="download_csv")],className='container-btn')
+                ],className='container-ge'),
+            ]),
+                
     html.Div(children=[
             dcc.Upload(id='upload-data', accept='.dat', children=[
                 dbc.Button(html.Img(src='static/svg/folder-open.svg',width=15,alt='open'), color="succes", className="mb-1 btn-outline-success")]),
                 dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
                 dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
                 dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
-                dbc.Button("1", color="succes", active=True, className="mb-1 btn-outline-success")],className='vertical_checks'),
+                dbc.Button("1", color="succes", active=True, className="mb-1 btn-outline-success")],className='vertical_checks'),    
     html.Div(
         dcc.Graph(
             id='example-graph-2',
             figure=fig,
-        )),
-    html.Div(children='Dash: A web application framework for Python.',className='features', style={
-        'textAlign': 'right',
-        'width':'250px',
-        'margin':'10px',
-        'justifySelf': 'end',
-        'color': colors['text']
-    })], className='total_graph'
-    )
+        ),className='central-graph p-3'),
+    html.Div(children='Dash: A web application framework for Python.',className='features'),
 ])
 
 
