@@ -8,6 +8,7 @@ from dash_html_components.Div import Div
 from dash_html_components.Span import Span
 import plotly.express as px
 import pandas as pd
+from dash.dependencies import Input, Output, State
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 external_stylesheets = ['http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css']
@@ -62,7 +63,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 
     html.Div(children=[
     html.Div(children=[
-            dcc.Upload(children=[
+            dcc.Upload(id='upload-data', accept='.dat', children=[
                 dbc.Button(html.Img(src='static/svg/folder-open.svg',width=15,alt='open'), color="succes", className="mb-1 btn-outline-success")]),
                 dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
                 dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
@@ -82,6 +83,17 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     })], className='total_graph'
     )
 ])
+
+
+
+
+@app.callback(Output('record_name', 'children'),
+              Input('upload-data', 'contents'),
+              State('upload-data', 'filename'),
+              State('upload-data', 'last_modified'))
+
+def update_output(list_of_contents, filename_o, list_of_dates):
+    return filename_o
 
 if __name__ == '__main__':
     app.run_server(debug=True)
