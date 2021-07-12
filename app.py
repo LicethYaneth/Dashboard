@@ -62,11 +62,12 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 
     html.Div(children=[
     html.Div(children=[
-            dbc.Button(html.Img(src='static/svg/folder-open.svg',width=15,alt='open'), color="succes", className="mb-1 btn-outline-success"),
-            dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
-            dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
-            dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
-            dbc.Button("1", color="succes", active=True, className="mb-1 btn-outline-success")],className='vertical_checks'),
+            dcc.Upload(children=[
+                dbc.Button(html.Img(src='static/svg/folder-open.svg',width=15,alt='open'), color="succes", className="mb-1 btn-outline-success")]),
+                dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
+                dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
+                dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
+                dbc.Button("1", color="succes", active=True, className="mb-1 btn-outline-success")],className='vertical_checks'),
     html.Div(
         dcc.Graph(
             id='example-graph-2',
