@@ -16,7 +16,7 @@ import os
 
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-external_stylesheets = ['http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css']
+external_stylesheets = ['https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css']
 
 UPLOAD_DIRECTORY = "/project/app_uploaded_files"
 
@@ -54,22 +54,23 @@ app.layout = html.Div(children=[
                     html.Div(children=[
                         html.Div(children=[
                             html.Div('Record name: ',className='title'),
-                            html.Div(id='record_name')], className='item'),
+                            html.Div(id='record_name', className='ml-2')], className='item'),
                         html.Div(children=[
                             html.Div('Lenght signal: ',className='title'),
-                            html.Div(id='lenght_name')], className='item'),
+                            html.Div(id='lenght_name', className='ml-2')], className='item'),
                         html.Div(children=[
-                            html.Div('fs: ',className='title'),
-                            html.Div(id='fs_name')], className='item')], className='box')],className='container_m'),
+                            html.Div('FS: ',className='title'),
+                            html.Div(id='fs_name', className='ml-2')], className='item')], className='box')],className='container_m'),
                 html.Div(children=[
                         dbc.Button('Show Metadata',color="success",className="btn-sm disabled mr-2 btn-hrv",id="show_metadata"),
-                        dbc.Button('Download as csv',color="success",className="btn-sm disabled mr-5 btn-hrv",id="download_csv")],className='container-btn')
+                        dbc.Button('Download as csv',color="success",className="btn-sm disabled mr-4 btn-hrv",id="download_csv")],className='container-btn')
                 ],className='container-ge'),
             ]),
                 
     html.Div(children=[
             dcc.Upload(id='upload-data', accept='.dat', children=[
-                dbc.Button(html.Img(src='static/svg/folder-open.svg',width=15,alt='open'), color="succes", className="mb-1 btn-outline-success")]),
+                dbc.Button(html.I(className='bi bi-folder2-open m-2'), color="succes", className="mb-1 btn-outline-success")
+                ]),
                 dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
                 dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
                 dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
