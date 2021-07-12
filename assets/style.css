@@ -1,0 +1,55 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin: 5px;
+    font-weight: 300;
+}
+
+.container {
+    display: flex;
+    font-family: "Fira Sans", sans-serif;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container_m {
+    display: flex;
+    font-family: "Fira Sans", sans-serif;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+
+.svgicon {
+    color: #fff !important;
+}
+
+.title {
+    font-weight: 500;
+}
+
+#download_csv {
+    height: 50px;
+}
+
+.vertical_checks {
+    display: flex;
+    flex-direction: column;
+    width: 45px;
+    margin: 10px;
+}
+
+.total_graph {
+    display: flex;
+    flex-direction: row;
+}
