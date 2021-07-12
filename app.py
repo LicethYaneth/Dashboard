@@ -1,7 +1,9 @@
 from logging import disable
+import re
 import dash
 import dash_core_components as dcc
 from dash_html_components.Label import Label
+from numpy.lib.npyio import recfromtxt
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash_html_components.Div import Div
@@ -9,13 +11,19 @@ from dash_html_components.Span import Span
 import plotly.express as px
 import pandas as pd
 from dash.dependencies import Input, Output, State
+import wfdb
+import os
 
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 external_stylesheets = ['http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css']
 
+UPLOAD_DIRECTORY = "/project/app_uploaded_files"
+
 app = dash.Dash(__name__)
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+
 
 colors = {
     'background': '#ffffff',
@@ -74,17 +82,25 @@ app.layout = html.Div(children=[
     html.Div(children='Dash: A web application framework for Python.',className='features'),
 ])
 
+def load_dat(filename_o):
+    record = wfdb.rdrecord(filename_o[:-4]) 
+    wfdb.plot_wfdb(record=record) 
+    return record.__dict__['record_name'], record.sig_len, record.fs
 
+    
 
 
 @app.callback(Output('record_name', 'children'),
               Output('lenght_name', 'children'),
+              Output('fs_name', 'children'),
               Input('upload-data', 'contents'),
               State('upload-data', 'filename'),
               State('upload-data', 'last_modified'))
 
 def update_output(list_of_contents, filename_o, list_of_dates):
-    return filename_o,list_of_dates
+
+    return load_dat(filename_o)
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
