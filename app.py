@@ -72,9 +72,11 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             id='example-graph-2',
             figure=fig,
         )),
-    html.Div(children='Dash: A web application framework for Python.', style={
-        'textAlign': 'center',
+    html.Div(children='Dash: A web application framework for Python.',className='features', style={
+        'textAlign': 'right',
         'width':'250px',
+        'margin':'10px',
+        'justifySelf': 'end',
         'color': colors['text']
     })], className='total_graph'
     )

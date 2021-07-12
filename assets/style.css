@@ -52,4 +52,5 @@
 .total_graph {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
