@@ -10,7 +10,7 @@
     font-family: "Fira Sans", sans-serif;
     display: flex;
     flex-direction: row;
-    flex-wrap:nowrap;
+    flex-wrap: nowrap;
     position: fixed;
     margin: 5px;
     width: 100vw;
@@ -46,6 +46,7 @@
 
 .title {
     font-weight: 500;
+    margin-right: 5px;
 }
 
 .vertical_checks {
@@ -59,7 +60,7 @@
     z-index: 1200;
 }
 
-.btn-hrv{
+.btn-hrv {
     height: 50px;
 }
 
