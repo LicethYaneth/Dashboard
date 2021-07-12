@@ -45,16 +45,16 @@ app.layout = html.Div(children=[
                     html.Div(children=[
                         html.Div(children=[
                             html.Div('Record name: ',className='title'),
-                            html.Div(id='record_name')], className='item'),
+                            html.Div(id='record_name', className='ml-2')], className='item'),
                         html.Div(children=[
                             html.Div('Lenght signal: ',className='title'),
-                            html.Div(id='lenght_name')], className='item'),
+                            html.Div(id='lenght_name', className='ml-2')], className='item'),
                         html.Div(children=[
-                            html.Div('fs: ',className='title'),
-                            html.Div(id='fs_name')], className='item')], className='box')],className='container_m'),
+                            html.Div('FS: ',className='title'),
+                            html.Div(id='fs_name', className='ml-2')], className='item')], className='box')],className='container_m'),
                 html.Div(children=[
                         dbc.Button('Show Metadata',color="success",className="btn-sm disabled mr-2 btn-hrv",id="show_metadata"),
-                        dbc.Button('Download as csv',color="success",className="btn-sm disabled mr-5 btn-hrv",id="download_csv")],className='container-btn')
+                        dbc.Button('Download as csv',color="success",className="btn-sm disabled mr-4 btn-hrv",id="download_csv")],className='container-btn')
                 ],className='container-ge'),
             ]),
                 
