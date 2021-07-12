@@ -10,6 +10,7 @@ import plotly.express as px
 import pandas as pd
 from dash.dependencies import Input, Output, State
 
+
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 external_stylesheets = ['http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css']
 
@@ -77,12 +78,13 @@ app.layout = html.Div(children=[
 
 
 @app.callback(Output('record_name', 'children'),
+              Output('lenght_name', 'children'),
               Input('upload-data', 'contents'),
               State('upload-data', 'filename'),
               State('upload-data', 'last_modified'))
 
 def update_output(list_of_contents, filename_o, list_of_dates):
-    return filename_o
+    return filename_o,list_of_dates
 
 if __name__ == '__main__':
     app.run_server(debug=True)
