@@ -67,15 +67,16 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
             dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
             dbc.Button("1", color="succes", active=True, className="mb-1 btn-outline-success")],className='vertical_checks'),
+    html.Div(
+        dcc.Graph(
+            id='example-graph-2',
+            figure=fig,
+        )),
     html.Div(children='Dash: A web application framework for Python.', style={
         'textAlign': 'center',
+        'width':'250px',
         'color': colors['text']
-    }),
-
-    dcc.Graph(
-        id='example-graph-2',
-        figure=fig
-    )], className='total_graph'
+    })], className='total_graph'
     )
 ])
 
