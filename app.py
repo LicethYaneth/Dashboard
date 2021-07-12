@@ -9,17 +9,7 @@ from dash_html_components.Span import Span
 import plotly.express as px
 import pandas as pd
 from dash.dependencies import Input, Output, State
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import wfdb
-import statistics as st
-from scipy.sparse import csr_matrix
-from scipy.signal import find_peaks
-from wfdb import processing
-import numpy as np
-from scipy import sparse
-from scipy.sparse.linalg import spsolve
+
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 external_stylesheets = ['http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css']
