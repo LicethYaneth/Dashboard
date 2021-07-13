@@ -71,8 +71,7 @@ app.layout = html.Div(children=[
                 ]),
                 dbc.Button(html.Img(src="static/svg/ng_filled.svg"), color="succes", className="mb-1 btn-success btn-gn text-center"),
                 dbc.Button(html.Img(src="static/svg/bl_filled.svg"), color="succes", className="mb-1 btn-success btn-gn text-center"),
-                dbc.Button(html.Img(src="static/svg/pk_filled.svg"), color="succes", className="mb-1 btn-success btn-gn text-center"),
-                dbc.Button("1", color="succes", active=True, className="mb-1 btn-outline-success")],className='vertical_checks'),
+                dbc.Button(html.Img(src="static/svg/pk_filled.svg"), color="succes", className="mb-1 btn-success btn-gn text-center")],className='vertical_checks'),
         
     html.Div([
         dcc.Graph(
