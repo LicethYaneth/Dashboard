@@ -58,7 +58,7 @@ app.layout = html.Div(children=[
     html.Header(children=[
             html.Div(children=[
                 html.Div(children=[
-                    html.Img(src="static/svg/logo-hrv-nuevo.svg",width='160px'),
+                    html.Img(src="static/svg/logo-hrv-nuevo.svg",width='160px', className="p-2"),
                     html.Div(children=[
                         html.Div(children=[
                             html.Div('Record name: ',className='title'),
@@ -70,8 +70,8 @@ app.layout = html.Div(children=[
                             html.Div('FS: ',className='title'),
                             html.Div(id='fs_name', className='ml-2')], className='item')], className='box')],className='container_m'),
                 html.Div(children=[
-                        dbc.Button('Show Metadata',color="success",className="btn-sm disabled mr-2 btn-hrv",id="show_metadata"),
-                        dbc.Button('Download as csv',color="success",className="btn-sm disabled mr-4 btn-hrv",id="download_csv")],className='container-btn')
+                        dbc.Button('Show Metadata',className="btn-sm  mr-2 btn-hrv btn-success",id="show_metadata"),
+                        dbc.Button('Download as csv',className="btn-sm  mr-4 btn-hrv btn-success",id="download_csv")],className='container-btn')
                 ],className='container-ge'),
             ]),
 
@@ -79,12 +79,11 @@ app.layout = html.Div(children=[
                 
     html.Div(children=[
             dcc.Upload(id='upload-data', accept='.dat', children=[
-                dbc.Button(html.I(className='bi bi-folder2-open m-2'), color="succes", className="mb-1 btn-outline-success")
+                dbc.Button(html.Img(src="static/svg/open_filled.svg"), color="succes", className="mb-1 btn-success btn-gn text-center")
                 ]),
-                dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
-                dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
-                dbc.Button("1", color="succes", className="mb-1 btn-outline-success"),
-                dbc.Button("1", color="succes", active=True, className="mb-1 btn-outline-success")],className='vertical_checks'),    
+                dbc.Button(html.Img(src="static/svg/ng_filled.svg"), color="succes", className="mb-1 btn-success btn-gn text-center"),
+                dbc.Button(html.Img(src="static/svg/bl_filled.svg"), color="succes", className="mb-1 btn-success btn-gn text-center"),
+                dbc.Button(html.Img(src="static/svg/pk_filled.svg"), color="succes", className="mb-1 btn-success btn-gn text-center")],className='vertical_checks'),    
     html.Div(
         dcc.Graph(
             id='central-graph',

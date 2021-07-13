@@ -80,10 +80,14 @@
 
 .central-graph {
     position: fixed;
-    left: 65px;
+    left: 80px;
     top: 112px;
-    width: calc(100vw - 335px);
+    width: calc(100vw - 350px);
     height: calc(100vh - 112px);
     background-color: #d8d8d8;
     border-radius: 10px 10px 0 0;
+}
+
+.btn-gn{
+    width: 60px !important;
 }
