@@ -1,3 +1,8 @@
+import dash
+from dash.dependencies import Input, Output
+import dash_core_components as dcc
+import dash_html_components as html
+import pandas as pd
 from logging import disable
 import re
 import dash
@@ -20,26 +25,18 @@ from scipy.sparse.linalg import spsolve
 from scipy.signal import find_peaks
 import plotly.graph_objs as go
 
-
-
+import json
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-external_stylesheets = ['https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css']
 
-UPLOAD_DIRECTORY = "/project/app_uploaded_files"
 
 app = dash.Dash(__name__,prevent_initial_callbacks=True)
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+record = wfdb.rdrecord('269', channels=[1]) 
+signals, fields = wfdb.rdsamp('269', channels=[1])
+signal=signals.reshape(record.sig_len)
 
-
-colors = {
-    'background': '#ffffff',
-    'text': '#000000'
-}
-
-# assume you have a "long-form" data frame
-# see https://plotly.com/python/px-arguments/ for more options
 
 
 app.layout = html.Div(children=[
@@ -84,69 +81,17 @@ app.layout = html.Div(children=[
             'y': None,
         }]
     )],className='central-graph p-3'),
-    html.Div(children='Dash: A web application framework for Python.',className='features'),
+    html.Div(children='Dash: A web application framework for Python.',id='hola',className='features'),
 ])
-
-def baseline_als(y, lam, p, niter=10):
-    L = len(y)
-    D = sparse.diags([1,-2,1],[0,-1,-2], shape=(L,L-2))
-    D = lam * D.dot(D.transpose()) # Precompute this term since it does not depend on `w`
-    w = np.ones(L)
-    W = sparse.spdiags(w, 0, L, L)
-    for i in range(niter):
-        W.setdiag(w) # Do not create a new matrix, just update diagonal values
-        Z = W + D
-        z = spsolve(Z, w*y)
-        w = p * (y > z) + (1-p) * (y < z)
-    return z
-
-
-def apply_baseline(signal,record):
-    signal_bas=baseline_als(signal[:int(len(signal)/2)],100,0.001)
-    signal_bas_2=baseline_als(signal[int(len(signal)/2):int(len(signal))],100,0.001)
-    sub_1=np.subtract(signal[:int(len(signal)/2)],signal_bas)
-    sub_2=np.subtract(signal[int(len(signal)/2):int(len(signal))],signal_bas_2)
-    signal_com=np.concatenate((sub_1,sub_2),None)
-
-    signal_prep=pd.DataFrame(signal_com)
-    signal_prep_w=signal_prep.rolling(10).mean() 
-    x=signal_prep_w.values.reshape(record.sig_len)
-    peaks_1, _ = find_peaks(x, height=(0.7))
-    meanp=np.mean(signal_prep_w.values[peaks_1])
-    desv=np.std(signal_prep_w.values[peaks_1])
-
-    return x
-
-
-def load_dat(filename_o):
-    record = wfdb.rdrecord(filename_o[:-4], channels=[1]) 
-    signals, fields = wfdb.rdsamp(filename_o[:-4], channels=[1])
-    signal=signals.reshape(record.sig_len)
-    return record.__dict__['record_name'], record.sig_len, record.fs, signal
-
-
-@app.callback(Output('record_name', 'children'),
-              Output('lenght_name', 'children'),
-              Output('fs_name', 'children'),
-              Output('signal','data'),
-              Input('upload-data', 'contents'),
-              State('upload-data', 'filename'),
-              State('upload-data', 'last_modified'))
-
-def update_output_p(contents,filename_o, list_of_dates):
-    if contents is None:
-        raise PreventUpdate
-    else:
-        return load_dat(filename_o)
 
 @app.callback(
     Output('clientside-figure-store', 'data'),
-    Input('signal', 'data')
+    Input('hola', 'children')
 )
-def update_store_data(data):
+def update_store_data(value):
     return [{
-        'x': list(range(int(len(data))+1)),
-        'y': list(data[:int(len(data))]),
+        'x': list(range(int(len(signal))+1)),
+        'y': list(signal[:int(len(signal))]),
         'mode': 'line'
     }]
 
@@ -166,7 +111,6 @@ app.clientside_callback(
     Output('clientside-graph', 'figure'),
     Input('clientside-figure-store', 'data')
     )
-
 
 
 if __name__ == '__main__':
