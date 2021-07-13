@@ -75,7 +75,7 @@ app.layout = html.Div(children=[
         
     html.Div([
         dcc.Graph(
-        id='clientside-graph'),
+        id='clientside-graph',config={'scrollZoom': True}),
     dcc.Store(
         id='clientside-figure-store',
         data=[{
