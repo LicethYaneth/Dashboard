@@ -75,7 +75,9 @@
     position: fixed;
     right: 0;
     top: 112px;
+    height: calc(100vh - 112px);
     z-index: 1200;
+    overflow: scroll !important;
 }
 
 .central-graph {
@@ -84,10 +86,37 @@
     top: 112px;
     width: calc(100vw - 350px);
     height: calc(100vh - 112px);
-    background-color: #d8d8d8;
+    background-color: #f5f5f5;
     border-radius: 10px 10px 0 0;
 }
 
 .btn-gn{
     width: 60px !important;
+}
+
+h6{
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.input-data{
+    background-color: #e5e5e5;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 0px 2px 5px 2px;
+    height: 30px;
+    font-size: 0.8rem;
+}
+
+.input-father{
+    width: 100%;
+}
+
+.title-inputs{
+    font-weight: bold;
+    padding: 10px;
+}
+
+.metrics-space{
+    overflow-y: scroll;
 }
