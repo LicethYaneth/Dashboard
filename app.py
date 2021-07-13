@@ -83,7 +83,120 @@ app.layout = html.Div(children=[
             'y': None,
         }]
     )],className='central-graph p-3'),
-    html.Div(children='Dash: A web application framework for Python.',className='features'),
+    html.Div(children=[
+        html.Div(children=[
+            html.Div("Time Domain Features", className="text-center title-inputs"),
+            html.Div(children=[
+            html.Div(children=[
+                html.H6("SDDN", className="text-left"),
+                html.Div(id="sddn", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("NN20 Count", className="text-left"),
+                html.Div(id="nn20", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            ],className="d-flex flex-row flex-nowrap justify-content-between"),
+            
+            html.Div(children=[
+            html.Div(children=[
+                html.H6("SDSD:", className="text-left"),
+                html.Div(id="sdsd", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("NN50 Count", className="text-left"),
+                html.Div(id="nn50", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            ],className="d-flex flex-row flex-nowrap justify-content-between"),
+
+            html.Div(children=[
+            html.Div(children=[
+                html.H6("SDANN", className="text-left"),
+                html.Div(id="sdann", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("PNN50 Count", className="text-left"),
+                html.Div(id="pnn50", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            ],className="d-flex flex-row flex-nowrap justify-content-between"),
+
+            html.Div(children=[
+            html.Div(children=[
+                html.H6("RMSSD", className="text-left"),
+                html.Div(id="rmssd", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("PNN20 Count", className="text-left"),
+                html.Div(id="pnn20", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            ],className="d-flex flex-row flex-nowrap justify-content-between"),
+
+            html.Div("Frecuency Domain Features", className="text-center title-inputs"),
+
+            html.Div(children=[
+            html.Div(children=[
+                html.H6("LF", className="text-left"),
+                html.Div(id="lf", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("LF Norm", className="text-left"),
+                html.Div(id="lfnorm", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            ],className="d-flex flex-row flex-nowrap justify-content-between"),
+
+            html.Div(children=[
+            html.Div(children=[
+                html.H6("HF", className="text-left"),
+                html.Div(id="hf", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("HF Norm", className="text-left"),
+                html.Div(id="hfnorm", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            ],className="d-flex flex-row flex-nowrap justify-content-between"),
+
+            html.Div(children=[
+            html.Div(children=[
+                html.H6("VLF", className="text-left"),
+                html.Div(id="vlf", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("Total Power", className="text-left"),
+                html.Div(id="totalpower", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            ],className="d-flex flex-row flex-nowrap justify-content-between"),
+
+            html.Div("Geometrical Domain Features", className="text-center title-inputs"),
+
+            html.Div(children=[
+            html.Div(children=[
+                html.H6("Triangular Index", className="text-left"),
+                html.Div(id="tindex", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("TINN", className="text-left"),
+                html.Div(id="tinn", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            ],className="d-flex flex-row flex-nowrap justify-content-between"),
+
+            html.Div("Graphical metrics", className="text-center title-inputs"),
+
+            html.Div(children=[
+            html.Div(children=[
+                html.H6("metrica1", className="text-left"),
+                html.Div(id="metrica1", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("metrica2", className="text-left"),
+                html.Div(id="metrica2", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            html.Div(children=[
+                html.H6("metrica3", className="text-left"),
+                html.Div(id="metrica3", className="input-data"),
+            ],className="d-flex flex-column flex-nowrap input-father"),
+            ],className="d-flex flex-column flex-nowrap justify-content-between"),
+
+        ],className="d-flex flex-column flex-nowrap justify-content-start overflow-visible")
+    ],className='features'),
 ])
 
 def baseline_als(y, lam, p, niter=10):
